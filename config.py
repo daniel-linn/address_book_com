@@ -12,3 +12,4 @@ class Config:
 ## Default admin account(no space)
 ## username: admin
 ## password: admin
+## This application use sqlite3 database
