@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block main %}
+    <form action="/edit" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus="" class="form-control mx-auto w-auto" name="realname" placeholder="Realname" type="text" size="30">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus="" class="form-control mx-auto w-auto" name="nickname" placeholder="Nickname(can be empty)" type="text" size="30">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus="" class="form-control mx-auto w-auto" name="is_club_member" placeholder="Are you club member?" type="text" size="30">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus="" class="form-control mx-auto w-auto" name="contact" placeholder="Your email" type="text" size="30">
+        </div>
+        <button class="btn btn-primary" type="submit">submit</button>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Send Message
+{% endblock %}
+
+{% block main %}
+    <form action="/send_message" method="post">
+        <div class="mb-3">
+            <select name="recipient_name" class="form-control">
+                {% for user in users %}
+                    <option value="{{ user }}">{{ user }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus="" class="form-control mx-auto w-auto" name="title" placeholder="title" type="text" size="30">
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control mx-auto w-auto" name="content" placeholder="content" type="text" rows="4"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">submit</button>
+    </form>
+{% endblock %}
+

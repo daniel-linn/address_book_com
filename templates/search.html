@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+ 
+    <input autocomplete="off" autofocus class="form-control" placeholder="Who are you looking for?" type="text">
+
+    <ul class="search list-group mt-3"></ul>
+
+
+    <script>
+        let input = document.querySelector('input');
+        input.addEventListener('input', async function() {
+            let query = input.value.trim();
+            if (!query) {
+                document.querySelector('.search').innerHTML = '';
+                return;
+            }
+
+            try {
+                let response = await fetch('/search?q=' + encodeURIComponent(query));
+                if (response.ok) {
+                    let users = await response.json();
+                    let html = '';
+                    for (let user of users) {
+                        let realname = user.realname ? user.realname.replace('<', '&lt;').replace('&', '&amp;') : 'N/A';
+                        let nickname = user.nickname ? user.nickname.replace('<', '&lt;').replace('&', '&amp;') : 'N/A';
+                        let is_club_member = user.is_club_member ? user.is_club_member.replace('<', '&lt;').replace('&', '&amp;') : 'N/A';
+                        let contact = user.contact ? user.contact.replace('<', '&lt;').replace('&', '&amp;') : 'N/A';
+                        html += `<li class="list-group-item">Realname: ${realname}, Nickname: ${nickname}, Club Member: ${is_club_member}, Contact: ${contact}</li>`;
+                    }
+                    document.querySelector('.search').innerHTML = html;
+                } else {
+                    document.querySelector('.search').innerHTML = '<li class="list-group-item">Error fetching users</li>';
+                }
+            } catch (error) {
+                document.querySelector('.search').innerHTML = '<li class="list-group-item">Error fetching users</li>';
+            }
+        });
+    </script>
+
+{% endblock %}
+

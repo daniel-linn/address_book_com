@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Mailbox
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>content</th>
+                {% if user_role == 'admin' %}
+                    <th>recipient</th>
+                {% endif %}
+                <th>time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if user_role == 'admin' %}
+                {% for message, user_info in messages %}
+                    <tr>
+                        <td>{{ message.title }}</td>
+                        <td>{{ message.content }}</td>
+                        <td>{{ user_info.realname}}</td>
+                        <td><strong>{{ message.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</strong></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            {% if user_role == 'reader' %}
+                {% for message in messages %}
+                    <tr>
+                        <td>{{ message.title }}</td>
+                        <td>{{ message.content }}</td>
+                        <td><strong>{{ message.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</strong></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

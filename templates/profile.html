@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Proflie
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>username</th>
+                <th>realname</th>
+                <th>nickname</th>
+                <th>contact</th>
+                <th>role</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% set user, user_info, user_role = user %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user_info.realname }}</td>
+                <td>{{ user_info.nickname }}</td>
+                <td>{{ user_info.contact }}</td>
+                <td>{{ user_role.role }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

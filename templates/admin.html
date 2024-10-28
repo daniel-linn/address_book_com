@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block main %}
+<h3>Unvalidated User</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>nickname</th>
+            <th>are you club member?</th>
+            <th>contact</th>
+            <th>admin</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for user, user_info, user_role in users %}
+        <tr>
+            <td>{{ user_info.realname }}</td>
+            <td>{{ user_info.nickname }}</td>
+            <td>{{ user_info.is_club_member }}</td>
+            <td>{{ user_info.contact }}</td>
+            <td>
+                <form action="/admin" method="post">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <button type="submit" name="validate">Validate</button>
+                    <button type="submit" name="delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Validated User</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>nickname</th>
+            <th>are you club member?</th>
+            <th>contact</th>
+            <th>admin</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for user, user_info, user_role in users1 %}
+        <tr>
+            <td>{{ user_info.realname }}</td>
+            <td>{{ user_info.nickname }}</td>
+            <td>{{ user_info.is_club_member }}</td>
+            <td>{{ user_info.contact }}</td>
+            <td>
+                <form action="/admin" method="post">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <button type="submit" name="unvalidate">Unvalidate</button>
+                    <button type="submit" name="delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>    
+</table>
+{% endblock %}
+
