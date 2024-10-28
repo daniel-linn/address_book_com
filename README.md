@@ -36,8 +36,3 @@ For testing, use the `auto_register_30.py` script, which registers 30 sample use
 
 > **Important Security Note**: If deploying this app directly, change the default admin account password found in `config.py` immediately after setup.
 
-
-### Auto-Register Script
-For testing, use the auto_register_30.py script, which registers 30 sample users with basic information. Customize it as needed to suit your testing requirements.   
-
-**Cuation: If deploying this app directly, change the default admin account password found in config.py immediately after setup.**
