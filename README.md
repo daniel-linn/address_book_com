@@ -1,6 +1,6 @@
 # Address Book.com
 
-This is a web application built as a practice project and also serves as the final project for CS50. Enjoy exploring the functionality!  
+This is a web application built as a practice project and also serves as the final project for CS50. Enjoy exploring the functionality!<br>  
 This project mainly uses Flask and SQLAlchemy, and some JavaScript to implement the AJAX querying.
 
 ## About Address Book.com
